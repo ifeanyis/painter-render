@@ -16,7 +16,19 @@
 
   return function (node) {
 
-    // todo
+    // 建立绘图对象
+    var painter = function () {
+
+      // 这里编写常用的功能
+      // 待定
+
+    };
+
+    // 挂载组件
+    painter.layer = layerRender(node);
+
+    // 返回绘图对象
+    return painter;
 
   };
 

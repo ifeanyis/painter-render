@@ -24,13 +24,84 @@ var layerRender = function (canvas, width, height) {
   if (typeof width !== 'number') width = canvas.clientWidth;
   if (typeof height !== 'number') height = canvas.clientHeight;
 
-  // 图层
-  
+  // 图层集合
+  var bottomPointer, topPointer;
+  var layerCollection = {};
 
   // 建立图层管理者
   var layerManager = {
 
+    /**
+     * 建立新图层
+     * @param {string} id 图层名称，必须且唯一
+     * @return 图层管理者
+     */
+    "addLayer": function (id) {
 
+      // 必须保证图层名称的唯一性
+      if (layerCollection[id]) throw new Error('Layer [' + id + '] already exists!');
+
+      // 建立新的图层实体
+      var layer = {
+        "canvas": document.createElement('canvas'),
+        "pre": null,
+        "next": null
+      };
+      layer.canvas.setAttribute('width', width);
+      layer.canvas.setAttribute('height', height);
+      layer.painter = getCanvas2D(layer.canvas);
+
+      // 放入图层集合中
+      layerCollection[id] = layer;
+
+      // 更新链表
+      if (!bottomPointer && !topPointer) {
+        // 空链表的时候
+        bottomPointer = topPointer = id;
+      } else {
+        layerCollection[id].pre = topPointer;
+        layerCollection[topPointer].next = id;
+        topPointer = id;
+      }
+
+      return layerManager;
+    },
+
+    /**
+     * 查看图层或图层集合
+     * @param {string} id 图层名称，不传递或者传递的图层不存在就是查看图层集合
+     * @return 图层集合或图层
+     */
+    "seeLayer": function (id) {
+      return layerCollection[id] || {
+        top: topPointer,
+        bottom: bottomPointer,
+        layers: layerCollection
+      };
+    },
+
+    /**
+     * 删除图层或图层集合
+     * @param {string} id 图层名称，不传递或传递的图层不存在就是不做任何操作
+     * @return 图层管理者
+     */
+    "delLayer": function (id) {
+      var layer = layerCollection[id];
+      if (layer) {
+
+        // 顶点和底部指针
+        if (topPointer == id) topPointer = layer.pre;
+        if (bottomPointer == id) bottomPointer = layer.next;
+
+        // 链表指针
+        if (layer.pre != null) layerCollection[layer.pre].next = layer.next;
+        if (layer.next != null) layerCollection[layer.next].pre = layer.pre;
+      }
+
+      // 删除图层
+      delete layerCollection[id];
+      return layerManager;
+    }
 
   };
 
