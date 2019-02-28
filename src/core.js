@@ -14,4 +14,10 @@
 
   // @CODE build.js inserts compiled painter-render here
 
+  return function (node) {
+
+    // todo
+
+  };
+
 });

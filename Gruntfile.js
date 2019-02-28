@@ -9,7 +9,8 @@ let banner = '/*!\n' +
 // 打包文件
 const source = [
 
-
+  "src/tool.js",
+  "src/layer.js"
 
 ];
 
