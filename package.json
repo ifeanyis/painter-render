@@ -1,0 +1,30 @@
+{
+  "name": "painter-render",
+  "version": "0.0.0next",
+  "description": "基于canvas2D设计的类似photoshop的绘图对象。Photoshop-like drawing object based on canvas 2D design.",
+  "main": "index.js",
+  "scripts": {
+    "release": "node_modules/.bin/grunt release",
+    "start": "npm install && npm run release"
+  },
+  "keywords": [
+    "canvas",
+    "photoshop"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yelloxing/painter-render.git"
+  },
+  "author": "心叶",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yelloxing/painter-render/issues"
+  },
+  "homepage": "https://github.com/yelloxing/painter-render#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-uglify": "^4.0.0",
+    "grunt-plug-insert": "^0.1.2"
+  }
+}
