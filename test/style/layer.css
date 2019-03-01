@@ -26,11 +26,11 @@
 }
 
 #layer>li>span[isshow='no']:first-child {
-    background-image: url('./image/hidden.png');
+    background-image: url('../image/hidden.png');
 }
 
 #layer>li>span:first-child {
-    background-image: url('./image/show.png');
+    background-image: url('../image/show.png');
     background-repeat: no-repeat;
     background-position: center;
     width: .3rem;
@@ -38,7 +38,7 @@
 }
 
 #layer>li>canvas {
-    background-image: url('./image/blank.jpg');
+    background-image: url('../image/blank.jpg');
     margin: 5px;
     background-size: .1rem;
 }

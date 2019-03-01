@@ -1,0 +1,12 @@
+.menu{
+  width: 9.4rem;
+  background-color: #343437;
+}
+.menu>li{
+  display: inline-block;
+  color:white;
+  font-size: 12px;
+  line-height: 1em;
+  padding: .1rem;
+  cursor: pointer;
+}

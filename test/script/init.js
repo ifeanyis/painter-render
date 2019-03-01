@@ -3,6 +3,30 @@ $$('body').css({
   "user-select": "none"
 });
 
+// 菜单
+$$('<ul class="menu">' +
+  "<li>文件</li>" +
+  "<li>编辑</li>" +
+  "<li>图像</li>" +
+  "<li>图层</li>" +
+  "<li>类型</li>" +
+  "<li>选择</li>" +
+  "<li>滤镜</li>" +
+  "<li>视图</li>" +
+  "<li>帮助</li>" +
+  '</ul>').appendTo('body');
+
+// 工具配置
+$$("<ul class='tool-config'>" +
+  "" +
+  "</ul>").appendTo('body');
+
+// 工具箱
+$$("<ul class='tool-box'>" +
+  "<li class='polygon'>多边形</li>" +
+  "<li class='text'>文字</li>" +
+  "</ul>").appendTo('body');
+
 // 画布
 $$("<canvas>非常抱歉，您的浏览器不支持canvas!</canvas>")
   .appendTo('body')
