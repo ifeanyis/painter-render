@@ -1,5 +1,5 @@
 /*!
-*  @license painter-render v0.0.0next
+*  @license painter-render v0.0.1next
 * (c) 2019 yelloxing git+https://github.com/yelloxing/painter-render.git
 * License: MIT
 */
@@ -181,6 +181,7 @@ var layerRender = function (canvas, width, height) {
      */
     "update": function () {
       var pointer = bottomPointer;
+      painter.clearRect(0, 0, width, height);
       while (pointer != null) {
         if (layerCollection[pointer].eyeable) painter.drawImage(
           layerCollection[pointer].canvas,

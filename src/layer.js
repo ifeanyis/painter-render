@@ -150,6 +150,7 @@ var layerRender = function (canvas, width, height) {
      */
     "update": function () {
       var pointer = bottomPointer;
+      painter.clearRect(0, 0, width, height);
       while (pointer != null) {
         if (layerCollection[pointer].eyeable) painter.drawImage(
           layerCollection[pointer].canvas,

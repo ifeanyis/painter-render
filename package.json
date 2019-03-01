@@ -1,6 +1,6 @@
 {
   "name": "painter-render",
-  "version": "0.0.0next",
+  "version": "0.0.1next",
   "description": "基于canvas2D设计的类似photoshop的绘图对象。Photoshop-like drawing object based on canvas 2D design.",
   "main": "build/painter-render.min.js",
   "scripts": {
