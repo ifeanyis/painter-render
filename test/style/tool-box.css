@@ -12,11 +12,3 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
-.tool-box>li.polygon {
-    background-image: url('../image/polygon.png');
-}
-
-.tool-box>li.text {
-    background-image: url('../image/text.png');
-}

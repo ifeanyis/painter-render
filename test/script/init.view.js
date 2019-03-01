@@ -22,8 +22,9 @@ $$("<ul class='tool-config'>" +
 
 // 工具箱
 $$("<ul class='tool-box'>" +
-  "<li class='polygon'>多边形</li>" +
-  "<li class='text'>文字</li>" +
+  "<li class='move' style='background-image: url(\"./image/tool/move.png\")'>移动</li>" +
+  "<li class='polygon' style='background-image: url(\"./image/tool/polygon.png\")'>多边形</li>" +
+  "<li class='text' style='background-image: url(\"./image/tool/text.png\")'>文字</li>" +
   "</ul>").appendTo('body');
 
 // 画布
