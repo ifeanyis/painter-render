@@ -34,7 +34,7 @@ var layerRender = function (canvas, width, height) {
     /**
      * 建立新图层
      * @param {string} id 图层名称，必须且唯一
-     * @return 图层管理者
+     * @return 刚刚添加的图层
      */
     "add": function (id) {
 
@@ -65,7 +65,7 @@ var layerRender = function (canvas, width, height) {
         topPointer = id;
       }
 
-      return layerManager;
+      return layer;
     },
 
     /**

@@ -1,0 +1,44 @@
+#layer {
+    overflow-y: auto;
+}
+
+#layer>li:hover {
+    background-color: #909096;
+}
+
+#layer>li[iscurrent='yes'] {
+    background-color: #6c6c72;
+}
+
+#layer>li {
+    border-bottom: 1px solid gray;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    background-color: #535353;
+}
+
+#layer>li>span {
+    display: inline-block;
+    height: .4rem;
+    line-height: .4rem;
+    vertical-align: top;
+}
+
+#layer>li>span[isshow='no']:first-child {
+    background-image: url('./image/hidden.png');
+}
+
+#layer>li>span:first-child {
+    background-image: url('./image/show.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: .3rem;
+    border-right: 1px solid gray;
+}
+
+#layer>li>canvas {
+    background-image: url('./image/blank.jpg');
+    margin: 5px;
+    background-size: .1rem;
+}

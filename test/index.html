@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Painter</title>
+  <link rel="stylesheet" href="../node_modules/easycss-core/build/easycss.min.css">
+  <script src="../node_modules/clay-core/build/clay-core.min.js"></script>
+  <script src="../node_modules/clay-2d/build/clay-2d.js"></script>
+  <script src="../build/painter-render.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <script src="init.js"></script>
+  <script src="tool.layer.js"></script>
+
+  <script>
+
+    var painter = painterRender($$('canvas')[0]);
+
+    // 初始化的时候，添加第一个图层
+    addLayer('背景');
+
+  </script>
+
+</body>
+
+</html>

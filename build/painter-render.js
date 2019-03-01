@@ -65,7 +65,7 @@ var layerRender = function (canvas, width, height) {
     /**
      * 建立新图层
      * @param {string} id 图层名称，必须且唯一
-     * @return 图层管理者
+     * @return 刚刚添加的图层
      */
     "add": function (id) {
 
@@ -96,7 +96,7 @@ var layerRender = function (canvas, width, height) {
         topPointer = id;
       }
 
-      return layerManager;
+      return layer;
     },
 
     /**
@@ -203,11 +203,8 @@ var layerRender = function (canvas, width, height) {
   return function (node) {
 
     // 建立绘图对象
-    var painter = function () {
-
-      // 这里编写常用的功能
-      // 待定
-
+    var painter = function (config) {
+      // todo
     };
 
     // 挂载组件

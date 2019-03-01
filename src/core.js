@@ -17,11 +17,8 @@
   return function (node) {
 
     // 建立绘图对象
-    var painter = function () {
-
-      // 这里编写常用的功能
-      // 待定
-
+    var painter = function (config) {
+      // todo
     };
 
     // 挂载组件
