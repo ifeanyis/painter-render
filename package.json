@@ -23,10 +23,12 @@
   },
   "homepage": "https://github.com/yelloxing/painter-render#readme",
   "devDependencies": {
+    "clay-2d": "^2.0.0",
+    "clay-core": "^2.1.2",
+    "easycss-core": "^2.0.0",
     "grunt": "^1.0.3",
     "grunt-contrib-jshint": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.0",
-    "grunt-plug-insert": "^0.1.2",
-    "easycss-core": "^2.0.0"
+    "grunt-plug-insert": "^0.1.2"
   }
 }

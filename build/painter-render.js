@@ -17,14 +17,19 @@
 
   'use strict';
 
-  // 获取canvas2D对象
+  /**
+ * 获取canvas2D对象
+ * @param {node|CanvasRenderingContext2D} node canvas结点或2d绘图对象
+ * @return 返回2d绘图对象
+ */
 var getCanvas2D = function (node) {
   if (node && node.constructor === CanvasRenderingContext2D)
     return node;
   else {
     return node && node.getContext("2d");
   }
-};/**
+};
+/**
  * 
  * 图层启动器
  * -----------------------------------------
@@ -62,7 +67,7 @@ var layerRender = function (canvas, width, height) {
      * @param {string} id 图层名称，必须且唯一
      * @return 图层管理者
      */
-    "addLayer": function (id) {
+    "add": function (id) {
 
       // 必须保证图层名称的唯一性
       if (layerCollection[id]) throw new Error('Layer [' + id + '] already exists!');
@@ -71,7 +76,8 @@ var layerRender = function (canvas, width, height) {
       var layer = {
         "canvas": document.createElement('canvas'),
         "pre": null,
-        "next": null
+        "next": null,
+        "eyeable": true
       };
       layer.canvas.setAttribute('width', width);
       layer.canvas.setAttribute('height', height);
@@ -98,7 +104,7 @@ var layerRender = function (canvas, width, height) {
      * @param {string} id 图层名称，不传递或者传递的图层不存在就是查看图层集合
      * @return 图层集合或图层
      */
-    "seeLayer": function (id) {
+    "see": function (id) {
       return layerCollection[id] || {
         top: topPointer,
         bottom: bottomPointer,
@@ -111,7 +117,7 @@ var layerRender = function (canvas, width, height) {
      * @param {string} id 图层名称，不传递或传递的图层不存在就是不做任何操作
      * @return 图层管理者
      */
-    "delLayer": function (id) {
+    "delete": function (id) {
       var layer = layerCollection[id];
       if (layer) {
 
@@ -126,6 +132,63 @@ var layerRender = function (canvas, width, height) {
 
       // 删除图层
       delete layerCollection[id];
+      return layerManager;
+    },
+
+    /**
+     * 控制图层的显示和隐藏
+     * @param {string} id 图层名称，不传递或传递的图层不存在就是不做任何操作
+     * @param {boolean} eyeable 设置图层是否可见，可选，不传递就是交替显示和隐藏
+     * @return 图层管理者
+     */
+    "togger": function (id, eyeable) {
+      var layer = layerCollection[id];
+      if (layer) layer.eyeable = typeof eyeable === 'boolean' ? eyeable : !layer.eyeable;
+      return layerManager;
+    },
+
+    /**
+     * 把一个图层的某个区域更新到目标图层的指定位置上
+     * @param {json:id+x+y+width+height} source 源图层，必选
+     * @param {json:id+x+y+width+height} target 目标图层，必选
+     * @param {json} config 预留字段，可选
+     * @return 图层管理者
+     */
+    "draw": function (source, target, config) {
+
+      source.x = source.x || 0; source.y = source.y || 0;
+      target.x = target.x || 0; target.y = target.y || 0;
+
+      source.width = source.width || width; source.height = source.height || height;
+      target.width = target.width || width; target.height = target.height || height;
+
+      var layer = layerCollection[target.id];
+      if (layerCollection[source.id] && layer) {
+        layer.painter.save();
+        layer.painter.drawImage(
+          layerCollection[source.id].canvas,
+          source.x, source.y, source.width, source.height,
+          target.x, target.y, target.width, target.height
+        );
+        layer.painter.restore();
+      }
+      return layerManager;
+    },
+
+    /**
+     * 更新所有可视图层到画布上
+     * @return 图层管理者
+     */
+    "update": function () {
+      var pointer = bottomPointer;
+      while (pointer != null) {
+        if (layerCollection[pointer].eyeable) painter.drawImage(
+          layerCollection[pointer].canvas,
+          0, 0, width, height,
+          0, 0, width, height
+        );
+        pointer = layerCollection[pointer].next;
+      }
       return layerManager;
     }
 
